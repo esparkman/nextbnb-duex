@@ -1,20 +1,39 @@
 import houses from '../../houses.js'
 import Head from 'next/head'
 import Layout from '../../components/Layout.js'
+import DateRangePicker from '../../components/DateRangerPicker.js'
 
 export default function House(props) {
   return (
     <Layout
       content={
-        <div>
+        <div className="container">
           <Head>
             <title>{props.house.title}</title>
           </Head>
-          <img src={props.house.picture} width="100%" alt="House picture" />
-          <p>
-            {props.house.type} - {props.house.town}
-          </p>
-          <p>{props.house.title}</p>
+          <article>
+            <img src={props.house.picture} width="100%" alt="House picture" />
+            <p>
+              {props.house.type} - {props.house.town}
+            </p>
+            <p>{props.house.title}</p>
+          </article>
+          <aside>
+            <h2>Choose a Side</h2>
+            <DateRangePicker />
+          </aside>
+          <style jsx>{`
+            .container {
+              display: grid;
+              grid-template-columns: 60% 40%;
+              grid-gap: 30px;
+            }
+
+            aside {
+              border: 1px solid #ccc;
+              padding: 20px;
+            }
+          `}</style>
         </div>
       }
     />
